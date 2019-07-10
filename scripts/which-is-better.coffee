@@ -25,6 +25,7 @@ uhh_what = [
 
 module.exports = (robot) ->
   robot.respond /(which|who) is (better|worse)\?* (.*) or (.*?)\??$/i, (msg) ->
+	robot.logger.info "Somebody called me with login"
     choosen_response = msg.random [1..5]
     if choosen_response >= 3
       msg.send msg.random uhh_what
