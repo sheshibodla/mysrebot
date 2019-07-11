@@ -16,14 +16,14 @@ module.exports = (robot) => {
       } catch(e) {
         robot.logger.error("Invalid JSON submitted to Slack message callback");
         res
-          .send(422)
+          .status(422)
           .send('You supplied invalid JSON to this endpoint.');
         return;
       }
     } else {
       robot.logger.error("Non-JSON submitted to Slack message callback");
       res
-        .send(422)
+        .status(422)
         .send('You supplied invalid JSON to this endpoint.');
       return;
     }
@@ -33,7 +33,7 @@ module.exports = (robot) => {
     } else {
       robot.logger.error("Token mismatch on Slack message callback");
       res
-        .send(403)
+        .status(403)
         .send('You are not authorized to use this endpoint.');
       return;
     }
@@ -41,7 +41,7 @@ module.exports = (robot) => {
     var handled = robot.emit(`slack:msg_action:${data.callback_id}`, data, res);
     if (!handled) {
       res
-        .send(500)
+        .status(500)
         .send('No scripts handled the action.');
     }
   });
