@@ -10,4 +10,5 @@
   "hubot-rules",
   "hubot-shipit",
   "hubot-auth"
+  "hubot-interactive-messages"
 ]
