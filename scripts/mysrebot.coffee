@@ -19,7 +19,6 @@
 module.exports = (robot) ->
 	robot.hear /logout/i, (res) ->
 		robot.logger.info "Somebody called me with logout"
-		res.send "Hello How are you?"
 		robot.adapter.client.web.chat.postMessage(res.message.room, "message content", {
 			as_user: true,
 			unfurl_links: false,
@@ -42,7 +41,7 @@ module.exports = (robot) ->
 						},
 						"image_url": "https://api.slack.com/img/blocks/bkb_template_images/goldengate.png",
 						"alt_text": "Example Image"
-					}
+					},
 					{
 						"type": "actions",
 						"elements": [
@@ -56,7 +55,7 @@ module.exports = (robot) ->
 								"value": "click_me_123"
 							}
 						]
-					}
+					},
 					{
 						"type": "section",
 						"text": {
@@ -96,6 +95,22 @@ module.exports = (robot) ->
 									"value": "value-2"
 								}
 							]
+						}
+					},
+					{
+						"type": "section",
+						"text": {
+							"type": "mrkdwn",
+							"text": "Pick a date for the deadline."
+						},
+						"accessory": {
+							"type": "datepicker",
+							"initial_date": "1990-04-28",
+							"placeholder": {
+								"type": "plain_text",
+								"text": "Select a date",
+								"emoji": true
+							}
 						}
 					}
 				]
