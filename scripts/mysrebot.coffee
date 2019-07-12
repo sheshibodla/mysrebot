@@ -17,7 +17,7 @@
 #   sheshikumar
 
 module.exports = (robot) ->
-	robot.hear /logout/i, (res) ->
+	robot.hear /unusedlogout/i, (res) ->
 		robot.logger.info "Somebody called me with logout"
 		robot.adapter.client.web.chat.postMessage(res.message.room, "message content", {
 			as_user: true,

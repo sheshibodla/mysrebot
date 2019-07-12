@@ -17,7 +17,7 @@
 #   sheshikumar
 
 module.exports = (robot) ->
-	robot.hear /login/i, (res) ->
+	robot.hear /unusedlogin/i, (res) ->
 		robot.logger.info "Somebody called me with login"
 		res.send "Hello How are you?"
 		robot.adapter.client.web.chat.postMessage(res.message.room, "message content", {
@@ -31,8 +31,4 @@ module.exports = (robot) ->
 				}
 			]
 		})
-
-	robot.hear /badger/i, (res) ->
-		robot.logger.info "Somebody called me with badger"
-		res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
 	
