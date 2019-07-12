@@ -5,10 +5,33 @@
 
 var slackToken = process.env.HUBOT_SLACK_VERIFY_TOKEN;
 
+var express = require('express')
+var request = require('request')
+var bodyParser = require('body-parser')
+var app = express()
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+function sendMessageToSlackResponseURL(responseURL, JSONmessage){
+    var postOptions = {
+        uri: responseURL,
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        json: JSONmessage
+    }
+    request(postOptions, (error, response, body) => {
+        if (error){
+            // handle errors as you see fit
+        }
+    })
+}
+
 module.exports = (robot) => {
   robot.router.post('/hubot/slack-msg-callback', (req, res) => {
     var data = null;
-	robot.logger.info("Payload " + req.body.payload)
+	robot.logger.info("Body")
+	robot.logger.info(req.body)
 
     if(req.body.payload) {
       try {
