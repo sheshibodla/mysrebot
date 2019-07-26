@@ -42,7 +42,7 @@ module.exports = (robot) => {
 			if (reqBody.event.type == 'app_mention') {
 				robot.logger.info("App mention")
 				message = {
-					"text": "This is your first interactive message sendmebuttons",
+					"text": "This is your first interactive message app_mention",
 					"attachments": [
 						{
 							"text": "Building buttons is easy right?",
@@ -77,7 +77,7 @@ module.exports = (robot) => {
 			} else {
 				robot.logger.info("In default section")
 				message = {
-					"text": "This is your first interactive message Default",
+					"text": "This is your first interactive message slack/events Default",
 					"attachments": [
 						{
 							"text": "Building buttons is easy right?",
@@ -97,13 +97,6 @@ module.exports = (robot) => {
 									"text": "no",
 									"type": "button",
 									"value": "no"
-								},
-								{
-									"name": "maybe",
-									"text": "maybe",
-									"type": "button",
-									"value": "maybe",
-									"style": "danger"
 								}
 							]
 						}
@@ -111,6 +104,7 @@ module.exports = (robot) => {
 				}
 			}
 			//sendMessageToSlackResponseURL(responseURL, message)
+			robot.logger.info("Sending the below message: " + JSON.stringify(message))
 			res.status(200).send(message)
 		}
 	} else if (reqBody.challenge != null) {

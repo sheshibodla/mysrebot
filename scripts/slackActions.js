@@ -34,10 +34,14 @@ module.exports = (robot) => {
 	robot.logger.info(req.body)
     res.status(200).end() // best practice to respond with empty 200 status code
     var actionJSONPayload = JSON.parse(req.body.payload) // parse URL-encoded payload JSON string
-    var message = {
-        "text": actionJSONPayload.user.name+" clicked: "+actionJSONPayload.actions[0].name,
-        "replace_original": false
-    }
+	var message = "Default message"
+	if(actionJSONPayload.actions[0].type == "static_select") {
+		message = { "text": actionJSONPayload.user.name+" clicked ["+actionJSONPayload.actions[0].type+"]: "+actionJSONPayload.actions[0].name+" With Value: "+actionJSONPayload.actions[0].selected_option.value, "replace_original": false }
+	} else if (actionJSONPayload.actions[0].type == "datepicker") {
+		message = { "text": actionJSONPayload.user.name+" clicked ["+actionJSONPayload.actions[0].type+"]: "+actionJSONPayload.actions[0].name+" With Value: "+actionJSONPayload.actions[0].selected_date, "replace_original": false }
+	} else if (actionJSONPayload.actions[0].type == "button") {
+		message = { "text": actionJSONPayload.user.name+" clicked ["+actionJSONPayload.actions[0].type+"]: "+actionJSONPayload.actions[0].name+" With Value: "+actionJSONPayload.actions[0].value, "replace_original": false }
+	}
 	robot.logger.info("actionJSONPayload.response_url :" + actionJSONPayload.response_url)
     sendMessageToSlackResponseURL(actionJSONPayload.response_url, message)
 });

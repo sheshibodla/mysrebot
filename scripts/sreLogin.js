@@ -17,7 +17,7 @@
 //   sheshikumar
 
 	var loginMessage = {
-		"text": "This is your first interactive message sendmebuttons",
+		"text": "This is your first interactive message sreLogin",
 		"attachments": [
 			{
 				"text": "Building buttons is easy right?",
