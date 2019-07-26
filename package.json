@@ -6,6 +6,8 @@
   "description": "SRE Team sample Bot",
   "dependencies": {
     "@slack/interactive-messages": "^1.1.1",
+    "amazon-cognito-identity-js": "^3.0.14",
+    "aws-sdk": "^2.500.0",
     "axios": "^0.19.0",
     "hubot": "^3.3.2",
     "hubot-auth": "^2.1.0",
@@ -20,7 +22,12 @@
     "hubot-rules": "^1.0.0",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.1",
-    "hubot-slack": "^4.7.1"
+    "hubot-slack": "^4.7.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.1",
+    "node-fetch": "^2.6.0",
+    "request": "^2.88.0",
+    "web-midi-api": "^2.0.5"
   },
   "engines": {
     "node": "10.16.x"

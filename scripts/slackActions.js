@@ -10,6 +10,7 @@ var request = require('request')
 var bodyParser = require('body-parser')
 var app = express()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+global.navigator = require('web-midi-api');
 
 function sendMessageToSlackResponseURL(responseURL, JSONmessage){
     var postOptions = {
