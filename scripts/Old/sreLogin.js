@@ -22,7 +22,7 @@
 			{
 				"text": "Building buttons is easy right?",
 				"fallback": "Shame... buttons aren't supported in this land",
-				"callback_id": "button_tutorial",
+				"callback_id": "sreLogin",
 				"color": "#3AA3E3",
 				"attachment_type": "default",
 				"actions": [

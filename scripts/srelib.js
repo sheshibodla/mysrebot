@@ -58,9 +58,11 @@ function Login(uname, pwd) {
         },
 
     });
+	return result.getAccessToken().getJwtToken();
 }
 
 function ValidateToken(token) {
+	var result = "Invalid Token"
         request({
             url: `https://cognito-idp.${pool_region}.amazonaws.com/${poolData.UserPoolId}/.well-known/jwks.json`,
             json: true
@@ -95,9 +97,11 @@ function ValidateToken(token) {
                 jwt.verify(token, pem, function(err, payload) {
                     if(err) {
                         console.log("Invalid Token.");
+						result = "Invalid Token.";
                     } else {
                         console.log("Valid Token.");
                         console.log(payload);
+						result = "Valid Token.";
                     }
                 });
             } else {
@@ -106,47 +110,3 @@ function ValidateToken(token) {
         });
 }
 
-	var loginMessage = {
-		"text": "This is your first interactive message sreLogin",
-		"attachments": [
-			{
-				"text": "Building buttons is easy right?",
-				"fallback": "Shame... buttons aren't supported in this land",
-				"callback_id": "button_tutorial",
-				"color": "#3AA3E3",
-				"attachment_type": "default",
-				"actions": [
-					{
-						"name": "yes",
-						"text": "yes",
-						"type": "button",
-						"value": "yes"
-					},
-					{
-						"name": "no",
-						"text": "no",
-						"type": "button",
-						"value": "no"
-					},
-					{
-						"name": "maybe",
-						"text": "maybe",
-						"type": "button",
-						"value": "maybe",
-						"style": "danger"
-					}
-				]
-			}
-		]
-	}
-
-module.exports = robot =>
-	robot.hear(/validate (.*)/i, function(res) {
-		console.log(res.match[0]);
-		console.log(res.match[1]);
-		token = res.match[1]
-		robot.logger.info("Somebody called me with validate");
-		ValidateToken(token);
-		res.send(token);
-	})
-;

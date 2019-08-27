@@ -107,12 +107,12 @@ function ValidateToken(token) {
 }
 
 	var loginMessage = {
-		"text": "This is your first interactive message sreLogin",
+		"text": "This is your first interactive message sreAuth",
 		"attachments": [
 			{
 				"text": "Building buttons is easy right?",
 				"fallback": "Shame... buttons aren't supported in this land",
-				"callback_id": "button_tutorial",
+				"callback_id": "sreAuth",
 				"color": "#3AA3E3",
 				"attachment_type": "default",
 				"actions": [

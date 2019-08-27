@@ -1,4 +1,4 @@
-//// VERY IMPORTANT! If you don't verify the token against the one on the app's
+// VERY IMPORTANT! If you don't verify the token against the one on the app's
 // Basic Info page, anyone can trigger these actions!
 
 'use strict';
