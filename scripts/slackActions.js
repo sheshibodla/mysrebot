@@ -3,7 +3,8 @@
 
 'use strict';
 
-var slackToken = process.env.HUBOT_SLACK_VERIFY_TOKEN;
+var slackVerifyToken = process.env.HUBOT_SLACK_VERIFY_TOKEN;
+var slackToken = process.env.HUBOT_SLACK_TOKEN;
 
 var express = require('express')
 var request = require('request')
@@ -141,7 +142,6 @@ function postMessage(responseURL, message){
         method: 'POST',
         headers: {
             'Content-type': 'application/json; charset=utf-8',
-			'Authorization': 'Bearer xoxb-79161702406-690516522517-YiKYHWCSo3f4ngr9IXWfCqc8'
         },
         body: message
     }
@@ -165,7 +165,7 @@ function postSlackMessage(responseURL, message){
         method: 'POST',
         headers: {
             'Content-type': 'application/json; charset=utf-8',
-			'Authorization': 'Bearer xoxb-79161702406-690516522517-YiKYHWCSo3f4ngr9IXWfCqc8'
+			'Authorization': 'Bearer ' + slackToken
         },
         body: message
     }
@@ -193,6 +193,7 @@ module.exports = (robot) => {
 	robot.logger.info("reqPaylod.callback_id :" + reqPaylod.callback_id)
 	robot.logger.info("reqPaylod.response_url :" + reqPaylod.response_url)
 	robot.logger.info("reqPaylod.trigger_id :" + reqPaylod.trigger_id)
+
 	if (reqPaylod.type == "interactive_message") {
 		if(reqPaylod.actions[0].type == "static_select") {
 			message = { "text": reqPaylod.user.name+" clicked ["+reqPaylod.actions[0].type+"]: "+reqPaylod.actions[0].name+" With Value: "+reqPaylod.actions[0].selected_option.value, "replace_original": false }
