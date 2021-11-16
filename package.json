@@ -7,7 +7,7 @@
   "dependencies": {
     "@slack/interactive-messages": "^1.1.1",
     "amazon-cognito-identity-js": "^3.0.14",
-    "aws-sdk": "^2.500.0",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.21.1",
     "hubot": "^3.3.2",
     "hubot-auth": "^2.1.0",
