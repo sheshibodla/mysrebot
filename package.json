@@ -25,7 +25,7 @@
     "hubot-slack": "^4.7.1",
     "jsonwebtoken": "^8.5.1",
     "jwk-to-pem": "^2.0.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.1.1",
     "request": "^2.88.0",
     "web-midi-api": "^2.0.5"
   },
